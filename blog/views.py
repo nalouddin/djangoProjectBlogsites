@@ -15,10 +15,14 @@ def articles(request):
 
 def article_detail(request, id):
     article = Article.objects.get(id=id)
+    likes = article.reactions.filter(reaction='like').count()
+    dislikes = article.reactions.filter(reaction='dislike').count()
     return render(
         request=request,
         template_name='article_detail.html',
          context={
-             'article': article
+             'article': article,
+             'likes': likes,
+             'dislikes': dislikes
          }
     )

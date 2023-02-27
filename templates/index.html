@@ -8,7 +8,7 @@
     <ul>
         {% for article in articles %}
              <li>
-                <a><h3>{{ article.name }}</h3></a>
+                <a href="{% url 'article_detail' article.id %}"><h3>{{ article.name }}</h3></a>
                 <p>{{ article.content }}</p>
             </li>
         {% endfor %}
